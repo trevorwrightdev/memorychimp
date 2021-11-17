@@ -15,7 +15,7 @@ button.click(function (e) {
 
         gameMenu.fadeIn();
 
-        fillMenu(10);
+        fillMenu(4);
 
 
     });
