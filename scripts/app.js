@@ -136,15 +136,15 @@ function gameplay() {
 
                 // ! IF INCORRECT:
                 /* * We should probably just disable all inputs and fadeout everything into a new menu. 
-                this is probably the best way to do it. */
+                this is probably the best way to do it. We would also need to clear out a lot of data. 
+                Namely deleting all grid elements and reseting all global variables. */
 
-                for (let square of usableSquareButtons) {
-                    square.squareElement.off('click');
-                }
-
-                gameMenu.fadeOut();
+                // * make this better!!!!!
+                gameMenu.animate({opacity: 0}, mainMenuFadeTime, function () {
+                    open('index.html');
+                });
+                
             }
-
         });
     }
 }
