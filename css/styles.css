@@ -53,8 +53,8 @@ div.main-menu {
 
     display: grid;
     /* * Using 5 as a starting point. Grid will be 5 x 5 * */
-    grid-template-columns: repeat(6, 120px);
-    grid-template-rows: repeat(5, 120px);
+    grid-template-columns: repeat(6, 12vh);
+    grid-template-rows: repeat(5, 12vh);
 
 
 
