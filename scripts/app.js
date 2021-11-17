@@ -82,7 +82,7 @@ function fillMenu(level) {
 
             // * Here is a place where we would need to change values if we change the size of the grid.
 
-            let randomNumber = Math.floor(Math.random() * (30 - 1) + 1);
+            let randomNumber = Math.floor(Math.random() * (31 - 1) + 1);
 
             if (usableSquareNumbers.includes(randomNumber) === false) {
                 usableSquareNumbers.push(randomNumber);
