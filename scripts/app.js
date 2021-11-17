@@ -3,7 +3,8 @@ const gameMenu = $('.game-menu');
 
 gameMenu.hide();
 
-const timer = $('#timer').hide();
+const timer = $('#timer');
+timer.hide();
 
 // * Load Scripts
 function loadScript(url)
