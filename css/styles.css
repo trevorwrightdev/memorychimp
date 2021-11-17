@@ -10,7 +10,6 @@ html {
     font-family: 'Shippori Antique', sans-serif;
     font-size: 16px;
     background-color: #03fc4e;
-    color: solid black;
 }
 
 section {
@@ -21,6 +20,10 @@ section {
     justify-content: center;
     flex-direction: column;
     
+}
+
+button {
+    color: black;
 }
 
 div.main-menu {
