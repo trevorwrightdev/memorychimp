@@ -9,7 +9,7 @@
 html {
     font-family: 'Shippori Antique', sans-serif;
     font-size: 16px;
-    background-color: #03fc4e;
+    background-color: #ed0202;
 }
 
 section {
@@ -38,7 +38,7 @@ div.main-menu {
 }
 
 .main-menu button {
-    background-color: #3eb000;
+    background-color: #6b0202;
     margin: 10px;
     border-style: none;
     border-radius: 25px;
@@ -65,7 +65,7 @@ div.main-menu {
     height: 100px;
     border: none;
     border-radius: 25px;
-    background-color: #3eb000;
+    background-color: #6b0202;
     font-family: 'Shippori Antique', sans-serif;
     font-size: 1.3rem;
 }
