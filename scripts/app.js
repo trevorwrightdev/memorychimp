@@ -22,7 +22,9 @@ gameMenu.hide();
 const timer = $('#timer').hide();
 
 const button = $('.main-menu button');
-const usableSquareButtons = [];
+let usableSquareButtons = [];
+
+let currentLevelAmount;
 
 // * Main Menu
 button.click(function (e) { 
@@ -38,6 +40,7 @@ button.click(function (e) {
         timer.fadeIn();
 
         fillMenu(startAmount);
+        currentLevelAmount = startAmount;
 
         // * Start Timer
 
@@ -79,9 +82,7 @@ function fillMenu(level) {
             if (usableSquareNumbers.includes(randomNumber) === false) {
                 usableSquareNumbers.push(randomNumber);
             }
-
         }
-
     }
 
     for (let i = 1; i <= 30; i++) {
@@ -105,6 +106,7 @@ function fillMenu(level) {
     // * shuffle array of usable squares
 
     shuffle(usableSquareButtons);
+
 
     for (let i = 1; i <= level; i++) {
         usableSquareButtons[i - 1].number = i;
@@ -134,7 +136,41 @@ function gameplay() {
 
                 if (correctSquare === usableSquareButtons.length + 1) {
                     
-                    
+                    currentLevelAmount++;
+                    gameMenu.animate({opacity: 0}, mainMenuFadeTime, function() {
+
+                        // * This is where we do the resetting. Should work...
+                        gameMenu.empty();
+
+                        // * everything should be emptied... does this mean we can just fill it again?
+                        usableSquareButtons = [];
+
+                        // * making the timer visible again
+                        timer.animate({opacity: 1}, buttonFadeTime);
+
+                        fillMenu(currentLevelAmount);
+                        gameMenu.animate({opacity: 1}, mainMenuFadeTime);
+
+                        // ! This is autistic but I'll let it happen for now
+                        let secondsRemaining = timeLimit;
+
+                        timer.text(secondsRemaining.toString());
+
+                        let timerFunc = setInterval(function() {
+
+                            secondsRemaining--;
+
+                            if (secondsRemaining !== 0) {
+                                timer.text(secondsRemaining.toString());
+                            } else {
+                                timer.animate({opacity: 0}, buttonFadeTime);
+                                clearInterval(timerFunc);
+                                gameplay();
+                            }
+
+                        }, 1000 /* one second */);
+
+                    });
 
                 }
 
@@ -144,6 +180,8 @@ function gameplay() {
                 /* * We should probably just disable all inputs and fadeout everything into a new menu. 
                 this is probably the best way to do it. We would also need to clear out a lot of data. 
                 Namely deleting all grid elements and reseting all global variables. */
+
+                location.reload();
             }
         });
     }
