@@ -1,9 +1,25 @@
+// * Load Scripts
+function loadScript(url)
+{    
+    let head = document.getElementsByTagName('head')[0];
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    head.appendChild(script);
+}
+
+loadScript('scripts/functions.js');
+
+// * Main Code
+
 const gameMenu = $('.game-menu');
 
 gameMenu.hide();
 
 const button = $('.main-menu button');
+const usableSquareButtons = [];
 
+// * Main Menu
 button.click(function (e) { 
     e.preventDefault();
     
@@ -16,12 +32,13 @@ button.click(function (e) {
         gameMenu.fadeIn();
 
         fillMenu(4);
-
+        enableButtons();
 
     });
 
 });
 
+// * Game Setup
 function fillMenu(level) {
 
     const usableSquareNumbers = [];
@@ -42,12 +59,8 @@ function fillMenu(level) {
 
     }
 
-    const usableSquareButtons = [];
-
     for (let i = 1; i <= 30; i++) {
         const square = $(`<button class="item item-${i}"></button>`);
-        
-        // I should decrease the opacity of the squares rather than hide them. Also make them impossible to click on.
 
         if (usableSquareNumbers.includes(i) === false) {
             square.css('opacity', 0);
@@ -68,33 +81,17 @@ function fillMenu(level) {
         usableSquareButtons[i - 1].text(i.toString());
     }
     
-
-
 }
 
+function enableButtons() {
+    for (let button of usableSquareButtons) {
+
+        button.click(function(e) {
+
+            
+
+        });
 
 
-
-
-
-
-
-
-
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
     }
-  
-    return array;
-  }
+}
