@@ -53,8 +53,8 @@ div.main-menu {
     display: grid;
 
     /* * Using 6 and 5 as a starting point. Grid will be 6 x 5 * */
-    grid-template-columns: repeat(6, 12vh);
-    grid-template-rows: repeat(5, 12vh);
+    grid-template-columns: repeat(6, 17vh);
+    grid-template-rows: repeat(5, 17vh);
 
 
 
@@ -71,7 +71,7 @@ div.main-menu {
 }
 
 #timer {
-    margin: 5vh;
+    margin: 3vh;
 }
 
 

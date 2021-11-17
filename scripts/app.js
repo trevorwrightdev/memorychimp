@@ -133,7 +133,9 @@ function gameplay() {
                 correctSquare++;
 
                 if (correctSquare === usableSquareButtons.length + 1) {
-                    console.log('Stage complete.');
+                    
+                    
+
                 }
 
             } else {
