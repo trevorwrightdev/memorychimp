@@ -132,18 +132,16 @@ function gameplay() {
                 square.squareElement.animate({opacity: 0}, buttonFadeTime);
                 correctSquare++;
 
+                if (correctSquare === usableSquareButtons.length + 1) {
+                    console.log('Stage complete.');
+                }
+
             } else {
 
                 // ! IF INCORRECT:
                 /* * We should probably just disable all inputs and fadeout everything into a new menu. 
                 this is probably the best way to do it. We would also need to clear out a lot of data. 
                 Namely deleting all grid elements and reseting all global variables. */
-
-                // * make this better!!!!!
-                gameMenu.animate({opacity: 0}, mainMenuFadeTime, function () {
-                    open('index.html');
-                });
-                
             }
         });
     }
