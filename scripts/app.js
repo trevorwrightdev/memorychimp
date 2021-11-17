@@ -8,6 +8,11 @@ function loadScript(url)
     head.appendChild(script);
 }
 
+// ! It is likely that the reason I wasn't able to access variables 
+// ! was becuase the scripts were loaded after this one. This means that 
+// ! in events I would be able to use variables from these scripts no problem, because they are already loaded. Simply load those before this one.
+// ! Changing appendChild to something else should do the trick.
+
 loadScript('scripts/functions.js');
 loadScript('scripts/config.js');
 
@@ -170,10 +175,9 @@ function gameplay() {
 
                         }, 1000 /* one second */);
 
+                        // ! Autism ends here
                     });
-
                 }
-
             } else {
 
                 // ! IF INCORRECT:
