@@ -1,3 +1,10 @@
+// * Hide the required elements
+const gameMenu = $('.game-menu');
+
+gameMenu.hide();
+
+const timer = $('#timer').hide();
+
 // * Load Scripts
 function loadScript(url)
 {    
@@ -16,14 +23,6 @@ loadScript('scripts/functions.js');
 loadScript('scripts/config.js');
 
 // * Main Code
-
-// * Hide the required elements
-
-const gameMenu = $('.game-menu');
-
-gameMenu.hide();
-
-const timer = $('#timer').hide();
 
 const button = $('.main-menu button');
 let usableSquareButtons = [];
