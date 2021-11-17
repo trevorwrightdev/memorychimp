@@ -9,12 +9,17 @@ function loadScript(url)
 }
 
 loadScript('scripts/functions.js');
+loadScript('scripts/config.js');
 
 // * Main Code
+
+// * Hide the required elements
 
 const gameMenu = $('.game-menu');
 
 gameMenu.hide();
+
+const timer = $('#timer').hide();
 
 const button = $('.main-menu button');
 const usableSquareButtons = [];
@@ -25,14 +30,34 @@ button.click(function (e) {
     
     button.off('click');
 
-    $('.main-menu').animate({opacity: 0}, 500, function() {
+    $('.main-menu').animate({opacity: 0}, mainMenuFadeTime, function() {
 
         $('.main-menu').hide();
 
         gameMenu.fadeIn();
+        timer.fadeIn();
 
-        fillMenu(4);
-        enableButtons();
+        fillMenu(startAmount);
+
+        // * Start Timer
+
+        let secondsRemaining = timeLimit;
+
+        timer.text(secondsRemaining.toString());
+
+        let timerFunc = setInterval(function() {
+
+            secondsRemaining--;
+
+            if (secondsRemaining !== 0) {
+                timer.text(secondsRemaining.toString());
+            } else {
+                timer.animate({opacity: 0}, buttonFadeTime);
+                clearInterval(timerFunc);
+                gameplay();
+            }
+
+        }, 1000 /* one second */);
 
     });
 
@@ -66,7 +91,11 @@ function fillMenu(level) {
             square.css('opacity', 0);
         } 
         else {
-            usableSquareButtons.push(square);
+            const squareObject = {
+                squareElement: square,
+                number: undefined,
+            };
+            usableSquareButtons.push(squareObject);
         }
 
 
@@ -78,20 +107,44 @@ function fillMenu(level) {
     shuffle(usableSquareButtons);
 
     for (let i = 1; i <= level; i++) {
-        usableSquareButtons[i - 1].text(i.toString());
+        usableSquareButtons[i - 1].number = i;
+        usableSquareButtons[i - 1].squareElement.text(i.toString());
     }
     
 }
 
-function enableButtons() {
-    for (let button of usableSquareButtons) {
+function gameplay() {
 
-        button.click(function(e) {
+    let correctSquare = 1;
 
-            
+    for (let square of usableSquareButtons) {
+        // * Remove text
+        square.squareElement.text('');
+
+        // * Enable clicking
+        square.squareElement.click(function(e) {
+            e.preventDefault();
+
+            if (square.number === correctSquare) {
+
+                // * IF CORRECT:
+                square.squareElement.off('click');
+                square.squareElement.animate({opacity: 0}, buttonFadeTime);
+                correctSquare++;
+
+            } else {
+
+                // ! IF INCORRECT:
+                /* * We should probably just disable all inputs and fadeout everything into a new menu. 
+                this is probably the best way to do it. */
+
+                for (let square of usableSquareButtons) {
+                    square.squareElement.off('click');
+                }
+
+                gameMenu.fadeOut();
+            }
 
         });
-
-
     }
 }

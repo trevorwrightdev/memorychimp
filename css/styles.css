@@ -50,9 +50,9 @@ div.main-menu {
 }
 
 .game-menu {
-
     display: grid;
-    /* * Using 5 as a starting point. Grid will be 5 x 5 * */
+
+    /* * Using 6 and 5 as a starting point. Grid will be 6 x 5 * */
     grid-template-columns: repeat(6, 12vh);
     grid-template-rows: repeat(5, 12vh);
 
@@ -61,13 +61,17 @@ div.main-menu {
 }
 
 .item {
-    width: 10%;
-    height: 10%;
+    width: 100px;
+    height: 100px;
     border: none;
     border-radius: 25px;
     background-color: #3eb000;
     font-family: 'Shippori Antique', sans-serif;
     font-size: 1.3rem;
+}
+
+#timer {
+    margin: 5vh;
 }
 
 
