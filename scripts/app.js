@@ -4,7 +4,6 @@ const gameMenu = $('.game-menu');
 gameMenu.hide();
 
 const timer = $('#timer');
-timer.hide();
 
 // * Load Scripts
 function loadScript(url)
@@ -49,6 +48,8 @@ button.click(function (e) {
         // * Start Timer
 
         let secondsRemaining = timeLimit;
+
+        timer.show();
 
         timer.text(secondsRemaining.toString());
 

@@ -71,6 +71,7 @@ div.main-menu {
 }
 
 #timer {
+    display: none;
     margin: 3vh;
 }
 
