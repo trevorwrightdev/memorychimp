@@ -156,7 +156,7 @@ function gameplay() {
                         fillMenu(currentLevelAmount);
                         gameMenu.animate({opacity: 1}, mainMenuFadeTime);
 
-                        // ! This is autistic but I'll let it happen for now
+                        // ! This needs to be changed
                         let secondsRemaining = timeLimit;
 
                         timer.text(secondsRemaining.toString());
@@ -174,8 +174,6 @@ function gameplay() {
                             }
 
                         }, 1000 /* one second */);
-
-                        // ! Autism ends here
                     });
                 }
             } else {
